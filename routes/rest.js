@@ -13,4 +13,14 @@ router.post('/urls', jsonParser, function(req,res){
   });
 });
 
+router.get('/urls/:shortUrl', function(req,res){
+  var shortUrl = req.params.shortUrl;
+  var longUrl = urlService.getLongUrl(shortUrl);
+  res.json({
+    shortUrl: shortUrl,
+    longUrl: longUrl
+  });
+  console.log('data on server side', shortUrl, longUrl);
+});
+
 module.exports = router;
